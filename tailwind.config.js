@@ -17,7 +17,14 @@ export default {
       sans: ['sans-serif'],
       serif: ['Merriweather', 'serif'],
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'cafe': 'url(assets/images/backgrounds/cafe.jpg)',
+        'beach': 'url(assets/images/backgrounds/beach.jpg)',
+        'garden': 'url(assets/images/backgrounds/garden.jpg)',
+        'forest': 'url(assets/images/backgrounds/forest.jpg)',
+      }
+    },
   },
   plugins: [],
 }
