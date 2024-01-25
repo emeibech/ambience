@@ -17,9 +17,16 @@ export default function AudioController({
   if (audioRef.current) audioRef.current.volume = value / 100;
 
   return (
-    <div>
+    <div className="grid gap-2">
       <audio src={source} data-name={name} loop ref={audioRef} />
-      <Button>{name}</Button>
+      <Button
+        className={`
+        text-white border-2 rounded-full py-2
+        text-xs sm:text-sm
+      `}
+      >
+        {name}
+      </Button>
       <VolumeSlider
         minValue={0}
         maxValue={100}
