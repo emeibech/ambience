@@ -8,3 +8,16 @@
   min-height: 100vh;
   min-height: 100svh;
 }
+
+.bg-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  background-color: rgb(26, 24, 22);
+}
