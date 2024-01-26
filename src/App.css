@@ -1,3 +1,9 @@
+@font-face {
+  font-family: custom;
+  src: url('./assets/fonts/GloriaHallelujah-Regular.ttf');
+  font-display: swap;
+}
+
 #root {
   margin: 0 auto;
   padding: 0;
