@@ -1,4 +1,4 @@
-import { type AriaButtonProps, useButton } from '@react-aria/button';
+import { useButton, type AriaButtonProps } from '@react-aria/button';
 import { useHover } from '@react-aria/interactions';
 import { useRef } from 'react';
 import { useFocusRing } from '@react-aria/focus';
