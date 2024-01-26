@@ -1,4 +1,5 @@
 import { useFocusRing } from '@react-aria/focus';
+import { useHover } from '@react-aria/interactions';
 import {
   Slider,
   SliderThumb,
@@ -10,14 +11,23 @@ export default function VolumeSlider<T extends number | number[]>({
   ...props
 }: SliderProps<T>) {
   const { focusProps, isFocusVisible } = useFocusRing();
+  const { isHovered, hoverProps } = useHover({});
 
   return (
     <Slider
       {...props}
-      className="min-w-[120px] text-white"
+      className={`
+        min-w-[120px] text-white
+      `}
       aria-label="Volume slider"
     >
-      <SliderTrack className="relative w-full h-6 cursor-pointer">
+      <SliderTrack
+        {...hoverProps}
+        className={`
+        ${isHovered ? 'opacity-100' : 'opacity-80'}
+        relative w-full h-6 cursor-pointer transition-opacity duration-200
+      `}
+      >
         {({ state }) => (
           <div
             role="slider"
