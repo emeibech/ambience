@@ -14,7 +14,7 @@ export default {
       xl: '1440px',
     },
     fontFamily: {
-      sans: ['sans-serif'],
+      sans: ['custom', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
     },
     extend: {
