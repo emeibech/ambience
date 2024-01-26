@@ -23,9 +23,34 @@ import fish from '../assets/sounds/fish.mp3';
 import bees from '../assets/sounds/bees.mp3';
 import dragonfly from '../assets/sounds/dragonfly.mp3';
 
+export type AudioName =
+  | 'Coffee machine'
+  | 'Clinking'
+  | 'Soft chatter'
+  | 'Bustle'
+  | 'Jazz BGM'
+  | 'Lofi BGM'
+  | 'Gentle waves'
+  | 'Strong waves'
+  | 'Splashes'
+  | 'Wind'
+  | 'Campfire'
+  | 'Wading'
+  | 'Shishi-odoshi'
+  | 'Chimes'
+  | 'Birds'
+  | 'Fish'
+  | 'Bees'
+  | 'Dragonfly'
+  | 'Rustling'
+  | 'Footfalls'
+  | 'Drizzle'
+  | 'Cricket'
+  | 'Crow';
+
 export interface Audio {
   src: string;
-  name: string;
+  name: AudioName;
 }
 
 const sounds: {
@@ -37,7 +62,7 @@ const sounds: {
   cafe: [
     { src: coffeeMachine, name: 'Coffee machine' },
     { src: clinking, name: 'Clinking' },
-    { src: softChatter, name: 'Soft Chatter' },
+    { src: softChatter, name: 'Soft chatter' },
     { src: bustle, name: 'Bustle' },
     { src: jazz, name: 'Jazz BGM' },
     { src: lofi, name: 'Lofi BGM' },
