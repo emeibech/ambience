@@ -50,7 +50,7 @@ export default function VolumeSlider<T extends number | number[]>({
             <SliderThumb
               {...focusProps}
               className={`
-              ${isFocusVisible ? 'ring ring-zinc-300' : ''}
+              ${isFocusVisible ? 'ring ring-zinc-50' : ''}
               h-5 w-5 top-[50%] rounded-full bg-white border border-black/25
             `}
             />
