@@ -1,42 +1,82 @@
-import { Dispatch } from 'react';
-import { nanoid } from 'nanoid';
-import AudioController from './AudioController';
-import sounds, { type Audio } from '../modules/audios';
+import { Tab, TabList, TabPanel, Tabs, type Key } from 'react-aria-components';
+import AsmrInterface from './AsmrInterface';
+import type { Dispatch } from 'react';
 
-export type Name = 'cafe' | 'beach' | 'forest' | 'garden';
-
-export interface AsmrProps {
-  name: Name;
-  setActiveTab: Dispatch<React.SetStateAction<Name>>;
+interface AsmrProps {
+  activeTab: Key;
+  setActiveTab: Dispatch<React.SetStateAction<Key>>;
 }
 
-export default function Asmr({ name }: AsmrProps) {
+export default function Asmr({ activeTab, setActiveTab }: AsmrProps) {
   return (
-    <div
-      className={`
-        max-w-[960px] min-w-[min(90vw,_640px)] p-4 sm:p-8 rounded-2xl
-        backdrop-blur backdrop-brightness-[0.33]
-      `}
-      data-name={name}
+    <Tabs
+      defaultSelectedKey={'cafe'}
+      selectedKey={activeTab}
+      onSelectionChange={setActiveTab}
     >
-      <div
+      <TabList
+        aria-label="Asmr Tabs"
         className={`
-        grid gap-4 sm:gap-8
-        grid-cols-[repeat(2,_minmax(120px,_1fr))]
-        md:grid-cols-[repeat(3,_minmax(150px,_1fr))]
-      `}
+        grid grid-cols-4 cursor-pointer rounded-t-2xl text-white
+        mb-1 bg-black/75 text-xs sm:text-base
+        `}
       >
-        {generateAudios(sounds[name])}
-      </div>
-    </div>
-  );
-}
+        <Tab
+          id="cafe"
+          className={({ isFocusVisible }) => `
+          ${activeTab === 'cafe' ? 'bg-zinc-50/90 text-black' : ''}
+          ${!isFocusVisible ? 'outline-none' : ''}
+          rounded-tl-2xl border-r border-b py-1
+          `}
+        >
+          Cafe
+        </Tab>
 
-function generateAudios(audios: Audio[]) {
-  const keys = audios.map(() => nanoid());
-  return audios.map((audio, index) => {
-    return (
-      <AudioController key={keys[index]} source={audio.src} name={audio.name} />
-    );
-  });
+        <Tab
+          id="beach"
+          className={({ isFocusVisible }) => `
+          border-r border-b py-1
+          ${activeTab === 'beach' ? 'bg-zinc-50/90 text-black' : ''}
+          ${!isFocusVisible ? 'outline-none' : ''}
+          `}
+        >
+          Beach
+        </Tab>
+
+        <Tab
+          id="garden"
+          className={({ isFocusVisible }) => `
+          border-r border-b py-1
+          ${activeTab === 'garden' ? 'bg-zinc-50/90 text-black' : ''}
+          ${!isFocusVisible ? 'outline-none' : ''}
+          `}
+        >
+          Garden
+        </Tab>
+
+        <Tab
+          id="forest"
+          className={({ isFocusVisible }) => `
+          ${activeTab === 'forest' ? 'bg-zinc-50/90 text-black' : ''}
+          ${!isFocusVisible ? 'outline-none' : ''}
+          rounded-tr-2xl border-b py-1
+        `}
+        >
+          Forest
+        </Tab>
+      </TabList>
+      <TabPanel id="cafe">
+        <AsmrInterface name="cafe" />
+      </TabPanel>
+      <TabPanel id="beach">
+        <AsmrInterface name="beach" />
+      </TabPanel>
+      <TabPanel id="garden">
+        <AsmrInterface name="garden" />
+      </TabPanel>
+      <TabPanel id="forest">
+        <AsmrInterface name="forest" />
+      </TabPanel>
+    </Tabs>
+  );
 }
