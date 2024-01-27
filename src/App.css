@@ -25,5 +25,9 @@
 body {
   min-height: 100vh;
   min-height: 100svh;
-  background-color: rgb(26, 24, 22);
+  background-image: url('./assets/images/backgrounds/abstract.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
