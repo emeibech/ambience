@@ -1,11 +1,18 @@
 import type { Key } from 'react-aria-components';
 import './App.css';
 import Asmr from './components/Asmr';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import selectBg from './modules/selectBg';
+import ls from 'localstorage-slim';
 
 function App() {
-  const [activeTab, setActiveTab] = useState<Key>('cafe');
+  const defaultTab = useMemo(() => {
+    const def = ls.get('activeTab');
+    if (!def) ls.set('activeTab', 'cafe');
+    return typeOfActiveTab(def) ? def : 'cafe';
+  }, []);
+
+  const [activeTab, setActiveTab] = useState<Key>(defaultTab);
 
   return (
     <div
@@ -18,6 +25,15 @@ function App() {
         <Asmr activeTab={activeTab} setActiveTab={setActiveTab} />
       </main>
     </div>
+  );
+}
+
+function typeOfActiveTab(lsActiveTab: unknown): lsActiveTab is Key {
+  return (
+    (typeof lsActiveTab === 'string' && lsActiveTab === 'cafe') ||
+    lsActiveTab === 'beach' ||
+    lsActiveTab === 'garden' ||
+    lsActiveTab === 'forest'
   );
 }
 

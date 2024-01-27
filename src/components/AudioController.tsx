@@ -1,7 +1,11 @@
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
+import ls from 'localstorage-slim';
 import { Button } from './Button';
 import VolumeSlider from './VolumeSlider';
+import { defaultVolumes } from '../modules/audios';
 import type { AudioName } from '../modules/audios';
+
+ls.config.encrypt = true;
 
 export interface AudioControllerProps {
   source: string;
@@ -15,6 +19,16 @@ export default function AudioController({
   const audioRef = useRef<HTMLAudioElement>(null);
   const [value, setValue] = useState(50);
   const [isPlaying, setIsPlaying] = useState(false);
+
+  const defaultValues = useMemo(() => {
+    const def = ls.get('defaultVolumes');
+
+    if (!def) ls.set('defaultVolumes', defaultVolumes);
+
+    if (instanceOfDefaultValues(def)) setValue(def[name]);
+
+    return instanceOfDefaultValues(def) ? def : defaultVolumes;
+  }, [name]);
 
   if (audioRef.current) audioRef.current.volume = value / 100;
 
@@ -48,10 +62,29 @@ export default function AudioController({
       <VolumeSlider
         minValue={0}
         maxValue={100}
-        defaultValue={50}
+        defaultValue={defaultValues[name] ?? 50}
         value={value}
-        onChange={setValue}
+        onChange={(val) => {
+          setValue(val);
+          const defaultValues = ls.get('defaultVolumes');
+          if (instanceOfDefaultValues(defaultValues)) {
+            ls.set('defaultVolumes', { ...defaultValues, [name]: val });
+          }
+        }}
       />
     </div>
+  );
+}
+
+function instanceOfDefaultValues(
+  object: unknown,
+): object is typeof defaultVolumes {
+  return (
+    typeof object === 'object' &&
+    object !== null &&
+    'Coffee machine' in object &&
+    'Gentle waves' in object &&
+    'Shishi-odoshi' in object &&
+    'Rustling' in object
   );
 }

@@ -1,6 +1,7 @@
 import { Tab, TabList, TabPanel, Tabs, type Key } from 'react-aria-components';
 import AsmrInterface from './AsmrInterface';
-import type { Dispatch } from 'react';
+import { type Dispatch } from 'react';
+import ls from 'localstorage-slim';
 
 interface AsmrProps {
   activeTab: Key;
@@ -10,9 +11,11 @@ interface AsmrProps {
 export default function Asmr({ activeTab, setActiveTab }: AsmrProps) {
   return (
     <Tabs
-      defaultSelectedKey={'cafe'}
       selectedKey={activeTab}
-      onSelectionChange={setActiveTab}
+      onSelectionChange={(val) => {
+        setActiveTab(val);
+        ls.set('activeTab', val);
+      }}
     >
       <TabList
         aria-label="Asmr Tabs"

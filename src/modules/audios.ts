@@ -38,7 +38,7 @@ export type AudioName =
   | 'Wading'
   | 'Shishi-odoshi'
   | 'Chimes'
-  | 'Birds'
+  | 'Garden birds'
   | 'Fish'
   | 'Bees'
   | 'Dragonfly'
@@ -46,12 +46,40 @@ export type AudioName =
   | 'Footfalls'
   | 'Drizzle'
   | 'Cricket'
+  | 'Forest birds'
   | 'Crow';
 
 export interface Audio {
   src: string;
   name: AudioName;
 }
+
+export const defaultVolumes = {
+  'Coffee machine': 50,
+  Clinking: 50,
+  'Soft chatter': 50,
+  Bustle: 50,
+  'Jazz BGM': 50,
+  'Lofi BGM': 50,
+  'Gentle waves': 50,
+  'Strong waves': 50,
+  Splashes: 50,
+  Wind: 50,
+  Campfire: 50,
+  Wading: 50,
+  'Shishi-odoshi': 50,
+  Chimes: 50,
+  'Garden birds': 50,
+  Fish: 50,
+  Bees: 50,
+  Dragonfly: 50,
+  Rustling: 50,
+  Footfalls: 50,
+  Drizzle: 50,
+  Cricket: 50,
+  'Forest birds': 50,
+  Crow: 50,
+};
 
 const sounds: {
   cafe: Audio[];
@@ -78,7 +106,7 @@ const sounds: {
   garden: [
     { src: shishiOdoshi, name: 'Shishi-odoshi' },
     { src: chimes, name: 'Chimes' },
-    { src: gardenBirds, name: 'Birds' },
+    { src: gardenBirds, name: 'Garden birds' },
     { src: fish, name: 'Fish' },
     { src: bees, name: 'Bees' },
     { src: dragonfly, name: 'Dragonfly' },
@@ -88,7 +116,7 @@ const sounds: {
     { src: footfalls, name: 'Footfalls' },
     { src: drizzle, name: 'Drizzle' },
     { src: cricket, name: 'Cricket' },
-    { src: forestBirds, name: 'Birds' },
+    { src: forestBirds, name: 'Forest birds' },
     { src: crow, name: 'Crow' },
   ],
 };
