@@ -1,28 +1,22 @@
-import { useState } from 'react';
+import type { Key } from 'react-aria-components';
 import './App.css';
 import Asmr from './components/Asmr';
-import type { Name } from './components/Asmr';
+import { useState } from 'react';
+import selectBg from './modules/selectBg';
 
 function App() {
-  const [activeTab, setActiveTab] = useState<Name>('cafe');
+  const [activeTab, setActiveTab] = useState<Key>('cafe');
 
   return (
     <div
       className={`
-      svh grid grid-cols-1 grid-rows-[8fr_1fr]
-      bg-image bg-cafe
+      svh grid grid-cols-1 grid-rows-[12fr_1fr] bg-image
+      ${selectBg(activeTab)} backdrop-blur-3xl
     `}
     >
       <main className="flex justify-center items-end">
-        <Asmr name={activeTab} setActiveTab={setActiveTab} />
+        <Asmr activeTab={activeTab} setActiveTab={setActiveTab} />
       </main>
-      <footer
-        className={`
-         text-white opacity-75 text-sm flex justify-center items-end py-4
-      `}
-      >
-        Copyright © 2024 emeibech asmr. All rights reserved.
-      </footer>
     </div>
   );
 }
