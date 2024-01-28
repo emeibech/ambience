@@ -46,6 +46,7 @@ export default function VolumeSlider<T extends number | number[]>({
               style={{ width: state.getThumbPercent(0) * 100 + '%' }}
             />
             <SliderThumb
+              aria-label="Volume slider thumb"
               className={({ isFocusVisible }) => `
               ${isFocusVisible ? 'ring ring-zinc-50' : ''}
               h-5 w-5 top-[50%] rounded-full bg-white border border-black/25

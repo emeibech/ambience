@@ -16,6 +16,8 @@ function App() {
 
   return (
     <div
+      aria-label="Background image container"
+      aria-description="This element is simply a container for background images"
       className={`
       svh grid grid-cols-1 grid-rows-[12fr_1fr] bg-image
       ${selectBg(activeTab)} backdrop-blur-3xl

@@ -34,7 +34,13 @@ export default function AudioController({
 
   return (
     <div className="grid gap-2">
-      <audio src={source} data-name={name} loop ref={audioRef} />
+      <audio
+        aria-hidden="true"
+        src={source}
+        data-name={name}
+        loop
+        ref={audioRef}
+      />
 
       <Button
         type="button"
