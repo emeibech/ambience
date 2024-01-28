@@ -1,16 +1,14 @@
-import { useFocusRing } from '@react-aria/focus';
 import { useHover } from '@react-aria/interactions';
 import {
   Slider,
-  SliderThumb,
   SliderTrack,
+  SliderThumb,
   type SliderProps,
 } from 'react-aria-components';
 
 export default function VolumeSlider<T extends number | number[]>({
   ...props
 }: SliderProps<T>) {
-  const { focusProps, isFocusVisible } = useFocusRing();
   const { isHovered, hoverProps } = useHover({});
 
   return (
@@ -48,8 +46,7 @@ export default function VolumeSlider<T extends number | number[]>({
               style={{ width: state.getThumbPercent(0) * 100 + '%' }}
             />
             <SliderThumb
-              {...focusProps}
-              className={`
+              className={({ isFocusVisible }) => `
               ${isFocusVisible ? 'ring ring-zinc-50' : ''}
               h-5 w-5 top-[50%] rounded-full bg-white border border-black/25
             `}
