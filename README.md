@@ -1,3 +1,3 @@
 # React + TypeScript + Vite
 
-asmr project wip
+ambience project wip
