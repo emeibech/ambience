@@ -13,7 +13,7 @@ Create the illusion of touching grass. [See it live](https://ambience.emeibech.c
 Clone the repo
 
 ```bash
-git clone https://github.com/emeibech/ai-tools.git
+git clone https://github.com/emeibech/ambience.git
 ```
 
 Install dependencies
